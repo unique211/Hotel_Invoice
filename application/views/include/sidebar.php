@@ -26,21 +26,21 @@
                     class="xn-text">Dashboard</span></a></li>
         <?php if($this->session->role=="Superadmin"){?>
         <li class="<?php if($active_menu=='con'){	echo 'x-active-nav';	} ?>"><a
-                href="<?php echo base_url() ?>Welcome/hotel"><span class="fa fa-users"></span> <span
+                href="<?php echo base_url() ?>Welcome/hotel"><span class="fa fa-bed"></span> <span
                     class="xn-text">Hotel Master</span></a></li>
 
         <?php }else{?>
         <li class="<?php if($active_menu=='item'){	echo 'x-active-nav';	} ?>"><a
-                href="<?php echo base_url() ?>Welcome/Item_master"><span class="fa fa-users"></span> <span
+                href="<?php echo base_url() ?>Welcome/Item_master"><span class="fa fa-lemon-o"></span> <span
 										class="xn-text">Item Master</span></a></li>
 										<li class="<?php if($active_menu=='emp'){	echo 'x-active-nav';	} ?>"><a
-                href="<?php echo base_url() ?>Welcome/Emp_master"><span class="fa fa-users"></span> <span
+                href="<?php echo base_url() ?>Welcome/Emp_master"><span class="fa fa-user-o"></span> <span
 										class="xn-text">Employee Master</span></a></li>
 										<li class="<?php if($active_menu=='table'){	echo 'x-active-nav';	} ?>"><a
-                href="<?php echo base_url() ?>Welcome/Table_master"><span class="fa fa-users"></span> <span
+                href="<?php echo base_url() ?>Welcome/Table_master"><span class="fa fa-table"></span> <span
                     class="xn-text">Table Master</span></a></li>
 					<li class="<?php if($active_menu=='bill'){	echo 'x-active-nav';	} ?>"><a
-                href="<?php echo base_url() ?>Welcome/Bill_generation"><span class="fa fa-users"></span> <span
+                href="<?php echo base_url() ?>Welcome/Bill_generation"><span class="fa fa-calculator"></span> <span
                     class="xn-text">Bill Generation</span></a></li>
         <?php }?>
         <!-- <li class="<?php if($active_menu=='tra'){	echo 'x-active-nav';	} ?>"><a href="<?php echo base_url() ?>Welcome/transaction"><span class="fa fa-money"></span> <span class="xn-text">Transaction Master</span></a></li>

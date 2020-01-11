@@ -77,6 +77,18 @@ class Welcome extends CI_Controller
 		
 	}
 
+	public function Bill_generation()
+	{
+		if (isset($this->session->userid)) {
+
+			$title['active_menu'] = "bill";
+			$this->load->view('bill_generation', $title);
+		} else {
+			redirect(base_url());
+		}
+		
+	}
+
 	public function transaction()
 	{
 		$title['active_menu'] = "tra";	

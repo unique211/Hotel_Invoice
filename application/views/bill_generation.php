@@ -197,10 +197,17 @@
                                                 <input type="hidden" id="save_update" value="">
 												<input class="btn btn-primary" type="submit" value="Save">
 												<button type="button" class="btn btn-warning" id="reset">Reset</button>
+												<button class="btn btn-success" type="submit" form="invoice_form"
+                                                                 id="btnprint" name="btnprint" value=""
+                                                                 style="display:none">Print</button>
+
+  
                                             </div>
                                         </div>
 									</form>
 									<form id="item_info" name="item_info"> </form>
+									<form name="invoice_form" id="invoice_form" method="POST"  action="<?php echo base_url('CBill_genrate/print_invoice');?>"
+                                                                 target="_blank"></form>
                                 </div>
                             </div>
                         </div>

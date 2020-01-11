@@ -72,6 +72,15 @@ class Bill_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+	function get_hotel_data()
+	{
+		$hotel_id=$this->session->hotel_id;
+		$this->db->select('*');
+		$this->db->from('hotel_master');
+		$this->db->where('hotel_master.id', $hotel_id);
+		$query = $this->db->get();
+		return $query->result();
+	}
 	function get_master_where($table_name, $id)
 	{
 		

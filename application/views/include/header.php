@@ -3,7 +3,7 @@
     <head>
       <!-- META SECTION -->
       <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url() ?>images/icon22.png">
-      <title>Water Supply Management</title>
+      <title>Hotel Invoice Management</title>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />

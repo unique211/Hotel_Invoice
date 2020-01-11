@@ -70,7 +70,9 @@ $(document).ready(function() {
                         ref_id = id;
                     }
 
-
+                    $("#btnprint").show();
+                    $('#btnprint').val(ref_id);
+                    $('#save_update').val(ref_id);
                     //alert(id);
                     //   alert(id + ",," + ref_id);
 
@@ -289,6 +291,8 @@ $(document).ready(function() {
 
                 for (var i = 0; i < data.length; i++) {
                     $('#save_update').val(id);
+                    $("#btnprint").show();
+                    $('#btnprint').val(id);
                     var date = data[i].date;
                     var fdob = date.split('-');
                     date = fdob[2] + "/" + fdob[1] + "/" + fdob[0];
@@ -371,7 +375,8 @@ $(document).ready(function() {
         $('#emp_nm').val('');
         $('#tamt').val('');
         $('#gst').val('');
-
+        $("#btnprint").hide();
+        $('#btnprint').val('');
         count_all_total();
     }
     $(document).on('click', '.closehideshow', function() {

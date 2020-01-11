@@ -135,4 +135,14 @@ class CBill_genrate extends CI_Controller
 		$data = $this->Bill_model->get_rate($item);
 		echo json_encode($data);
 	}
+	public function print_invoice()
+	{
+		$this->load->library('myfpdf');
+		$id=$this->input->post('btnprint');
+		$data['hotel_details']=$this->Bill_model->get_hotel_data();
+		$data['master']=$this->Bill_model->get_master_where('bill_master', $id);
+		$data['details']=$this->Bill_model->get_master_where1('bill_details', $id);
+		$this->load->view('bill_invoice2',$data);
+		
+	}
 }

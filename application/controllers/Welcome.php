@@ -113,9 +113,7 @@ class Welcome extends CI_Controller
 	}
 	public function dashboard()
 	{
-
-
-		
+	
 		if (isset($this->session->userid)) {
 
 			$title['active_menu'] = "ind";

@@ -31,6 +31,8 @@ class Welcome extends CI_Controller
 	{
 		$this->load->view('forgot');
 	}
+
+	
 	public function hotel()
 	{
 		if (isset($this->session->userid)) {

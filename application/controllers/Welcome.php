@@ -31,6 +31,8 @@ class Welcome extends CI_Controller
 	{
 		$this->load->view('forgot');
 	}
+
+	
 	public function hotel()
 	{
 		if (isset($this->session->userid)) {
@@ -91,29 +93,36 @@ class Welcome extends CI_Controller
 
 	public function transaction()
 	{
-		$title['active_menu'] = "tra";	
-		$this->load->view('transaction', $title);
-	
+		
+		if (isset($this->session->userid)) {
+
+			$title['active_menu'] = "tra";	
+			$this->load->view('transaction', $title);
+		} else {
+			redirect(base_url());
+		}
 	}
 	public function reports()
 	{
-		$title['active_menu'] = "rep";
-		$this->load->view('reports', $title);
 	
+		if (isset($this->session->userid)) {
+
+			$title['active_menu'] = "rep";
+		$this->load->view('reports', $title);
+		} else {
+			redirect(base_url());
+		}
 	}
 	public function dashboard()
 	{
+	
+		if (isset($this->session->userid)) {
 
-
-		$title['active_menu'] = "ind";
-		$this->load->view('index', $title);
-		// if (isset($this->session->userid)) {
-
-		// 	$title['active_menu'] = "ind";
-		// 	$this->load->view('index', $title);
-		// } else {
-		// 	redirect(base_url());
-		// }
+			$title['active_menu'] = "ind";
+			$this->load->view('index', $title);
+		} else {
+			redirect(base_url());
+		}
 	}
 
 	// public function birth_death()

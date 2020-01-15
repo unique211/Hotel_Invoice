@@ -27,11 +27,59 @@
                                    <div class="panel-heading">
                                         <h3 class="panel-title">Reports</h3>
                                         <ul class="panel-controls">
-                                             <li> <button class="btn btn-success btnhideshow" style="background-color:#00B050;"> Add Detail</button></li>
+                                             <!-- <li> <button class="btn btn-success btnhideshow" style="background-color:#00B050;"> Add Detail</button></li> -->
                                         </ul>
                                    </div>
                                    <div class="panel-body">
                                         <div class="col-lg-12 ">
+								<form action="" id="search_form" name="search_form">
+									<div class="row form-group">
+
+										<div class="col-lg-2">
+											<label>From</label>
+										</div>
+										<div class="col-lg-2">
+											<div class="input-group date " data-provide="datepicker" required>
+												<input type="text" class="form-control input-sm placeholdesize date1" id="from" autocomplete="off" name="from" require>
+												<div class="input-group-addon">
+													<span class="fa fa-calendar"></span>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-2">
+											<label>To</label>
+										</div>
+										<div class="col-lg-2">
+											<div class="input-group date " data-provide="datepicker" required>
+												<input type="text" class="form-control input-sm placeholdesize date1" id="to" autocomplete="off" name="to" require>
+												<div class="input-group-addon">
+													<span class="fa fa-calendar"></span>
+												</div>
+											</div>
+										</div>
+
+										<?php if ($this->session->role == "Superadmin") { ?>
+											
+											<div class="col-lg-2">
+												<label>Hotel Name</label>
+											</div>
+											<div class="col-lg-2">
+												<select name="hotel" id="hotel" class="form-control  hotel">
+												<option selected  value="0" >All</option>	
+												</select>
+											</div>
+										<?php } ?>
+
+
+
+									</div>
+									<div class="row form-group">
+										<button type="submit" style="float:right;" class="btn btn-warning">
+											Search</button>
+										<br>
+
+									</div>
+								</form>
                                              <div class="table-responsive" id="show_master">
                                              </div>
                                         </div>
@@ -41,57 +89,7 @@
                          </div>
                     </div>
                     <!--NEWS SECTION END-->
-                    <!-- strat notification -->
-                    <div class="row formhideshow" style="display: none;">
-                         <div class="col-md-12 col-sm-12 col-xs-12 right_side" id="form1" >
-                              <!-- START SIMPLE DATATABLE -->
-                              <div class="panel panel-default">
-                                   <div class="panel-heading">
-                                        <h3 class="panel-title">Reports</h3>
-                                        <div class="pull-right">
-                                             <button class="btn btn-success closehideshow" style="background-color:#00B050;">View Detail</button>
-                                        </div>
-                                   </div>
-                                   <div class="panel-body">
-                                        <div class="col-lg-12">
-                                             <form class="form-horizontal" id="master_form" name="master_form">
-                                                  <div class="row">
-                                                       <div class="form-group">
-                                                            <div class="col-sm-3">
-                                                                 <label>Date*</label>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                 <div class="input-group date " data-provide="datepicker" required>
-                                                                      <input type="text" class="form-control input-sm placeholdesize date1" id="salary_date" autocomplete="off" name="salary_date">
-                                                                      <div class="input-group-addon">
-                                                                           <span class="fa fa-calendar"></span>
-                                                                      </div>
-                                                                 </div>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                 <label>Salary*</label>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                 <input type="number" id="salary" name="salary" class="form-control" placeholder="Salary" required>
-                                                            </div>
-                                                       </div>
-                                                  </div>
-                                        </div>
-                                   </div>
-                                   <div class="btn-group pull-right">
-                                        <input type="hidden" id="save_update" value="">
-                                        <button class="btn btn-primary" type="submit">Save</button>
-                                        </form>
-                                        <button class="btn btn-info " id="reset">Reset</button>
-                                   </div>
-                              </div>
-                              <!--panel panel default-->
-                              <!-- END SIMPLE DATATABLE -->
-                         </div>
-                         <!------------------------form1-end------------------------------->
-                         <!-------------------------------------------------------------------------------------------------------------------------->
-                    </div>
-                    <!-- end notification -->
+                  
                </div>
                <!-- END PAGE CONTENT WRAPPER -->
           </div>
@@ -105,9 +103,9 @@
      <?php include('include/footer_scripts.php');  ?>
      <!-- END SCRIPTS -->
      <script type="text/javascript">
-          var baseurl = "<?php print base_url(); ?>";
+          var base_url = "<?php print base_url(); ?>";
      </script>
-     <!-- <script src="<?php echo base_url(); ?>assets/js/myjs/birth_death.js"></script> -->
+     <script src="<?php echo base_url(); ?>assets/js/myjs/report.js"></script>
      <!--fileupload Files -->
      <script src="<?php echo base_url() . 'assets/js/AjaxFileUpload.js' ?>"></script>
      <script type="text/javascript">
@@ -120,9 +118,9 @@
                autoclose: true,
           });
           var date = new Date();
-          date = date.toString('DD/MM/YYYY');
-          $(".date").val(date);
-          //  $("#fdate").val(date);
+          date = date.toString('dd/MM/yyyy');
+          $("#from").val(date);
+            $("#to").val(date);
      </script>
 </body>
 </html>

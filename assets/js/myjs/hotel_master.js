@@ -301,6 +301,7 @@ $(document).ready(function() {
                     $('#gst_no').val(data[i].gst_no);
                     $('#spcl_note').val(data[i].note);
                     $('#file_attachother').val(data[i].logo);
+                    $("#msg").html("<font id='doc_image_name1' color='green'>" + data[i].logo + "</font>");
                     $('#printer').val(data[i].printer);
 
                     var fdateval = data[i].from_date;

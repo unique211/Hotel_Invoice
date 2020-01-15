@@ -1,4 +1,9 @@
-        <!-- START PLUGINS -->
+<footer class="text-center" style="margin-left:15%;padding-bottom:0%; ">
+     <!-- 2019 © copyright <a href="http://allysoftsolutions.com/" target="blank">Ally Soft
+         Sollutions</a>. All rights Reserved. -->
+         <img src="<?php echo base_url(); ?>assets/images/iso-9001-2015.png" style="width:6%;"> <b>ISO 9001-2015 Certified Company ::</b>2019 ©️ copyright <a href="http://www.zodiactechsoft.com/" target="blank">Zodiactech Software</a>. All rights Reserved.
+ </footer>
+	<!-- START PLUGINS -->
         <script type="text/javascript" src="<?php echo base_url() ?>assets/js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url() ?>assets/js/plugins/jquery/jquery-ui.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

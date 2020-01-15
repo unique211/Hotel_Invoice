@@ -102,7 +102,8 @@ class Welcome extends CI_Controller
 			redirect(base_url());
 		}
 	}
-	public function reports()
+
+	public function Report()
 	{
 	
 		if (isset($this->session->userid)) {

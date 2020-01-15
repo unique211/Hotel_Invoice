@@ -601,8 +601,8 @@ $(document).ready(function() {
 
 
 
-    getMasterSelect('emp_master', '#table_nm');
-    getMasterSelect('table_master', '#emp_nm');
+    getMasterSelect('emp_master', '#emp_nm');
+    getMasterSelect('table_master', '#table_nm');
     getMasterSelect('item_master', '#item_nm');
 
     function getMasterSelect(table_name, selecter) {

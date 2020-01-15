@@ -84,12 +84,12 @@
                                                                  </div>
 											</div>
 											<div class="col-md-3">
-                                                <label class="control-label">Name of Customer*</label>
+                                                <label class="control-label">Name of Customer</label>
                                             </div>
                                             <div class="col-md-3">
                                                 <input type="text" placeholder="Customer Name"
                                                     class="form-control input-sm placeholdesize" id="customer"
-                                                    name="customer" required>
+                                                    name="customer" >
                                             </div>
                                            
                                         </div>

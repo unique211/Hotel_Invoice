@@ -94,6 +94,7 @@ $tot_amt=0;
 $gst_per=0;
 $tot_gst=0;
 $g_total= 0;
+$sgst=0;
 
 foreach($master as $value2)
  {
@@ -102,8 +103,11 @@ $emp_name=$value2->emp_name;
 $table_name=$value2->table_name;
 $tot_amt=$value2->total_amt;
 $gst_per=$value2->gst_per;
-$tot_gst= floatval($gst_per)*floatval($tot_amt)/100;
-$g_total= floatval($tot_amt)+floatval($tot_gst);
+$sgst=floatval($gst_per)/2;
+
+$tot_gst= floatval($sgst)*floatval($tot_amt)/100;
+$tot_gst2= floatval($gst_per)*floatval($tot_amt)/100;
+$g_total= floatval($tot_amt)+floatval($tot_gst2);
 
  }
 
@@ -151,14 +155,19 @@ foreach ($details as $value3) {
 
 	$sr = $sr + 1;
 }
-$table->easyCell("Thanks Visit Again", ' align:C; colspan:2; rowspan:3; border:1; font-size:12;font-style:BU;');
+$table->easyCell("Thanks Visit Again", ' align:C; colspan:2; rowspan:4; border:1; font-size:12;font-style:BU;');
 $table->easyCell("Total Amount", ' align:R;  border:TLR; font-size:12;font-style:B;');
 $table->easyCell("", 'align:C;border:TLR; font-size:12;');
 $table->easyCell("$tot_amt", 'align:R; border:TLR; font-size:12;');
 $table->printRow();
 
-$table->easyCell("GST (%) ", ' align:R;  border:TLR; font-size:12;font-style:B;');
-$table->easyCell("$gst_per%", 'align:R;border:TLR; font-size:12;');
+$table->easyCell("SGST (%) ", ' align:R;  border:TLR; font-size:12;font-style:B;');
+$table->easyCell("$sgst%", 'align:R;border:TLR; font-size:12;');
+$table->easyCell("$tot_gst", 'align:R; border:TLR; font-size:12;');
+$table->printRow();
+
+$table->easyCell("CGST (%) ", ' align:R;  border:TLR; font-size:12;font-style:B;');
+$table->easyCell("$sgst%", 'align:R;border:TLR; font-size:12;');
 $table->easyCell("$tot_gst", 'align:R; border:TLR; font-size:12;');
 $table->printRow();
 
@@ -171,13 +180,13 @@ $table->easyCell("", ' align:R; colspan:5; font-size:12; paddingY:8;');
 
 $table->printRow();
 
+$table->easyCell("<b>ISO 9001-2015 Certified Company ::</b>2020  copyright Zodiactech Software.", ' align:C; colspan:5; font-size:12; ');
 
+$table->printRow();
 
 
 
 $table->endTable(0);
-
-
 
 
 

@@ -45,7 +45,25 @@
         <!-- END MESSAGE BOX-->
 
         <!-- START SCRIPTS -->
-        <?php include('include/footer_scripts.php');  ?>
+				<!-- <?php
+				// include('include/footer_scripts.php'); 
+				 ?> -->
+
+				 <!-- START PLUGINS -->
+				 <script type="text/javascript" src="<?php echo base_url() ?>assets/js/plugins/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/plugins/jquery/jquery-ui.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="<?php echo base_url(); ?>assets/js/moment.js"></script>
+        <script type="text/javascript" src="<?php echo base_url() ?>assets/js/plugins/bootstrap/bootstrap.min.js"></script>     
+        <!-- END PLUGINS --> 
+				   <!-- sweetalert -->
+					 <script src="<?php echo base_url(); ?>assets/sweetalert/sweetalert.min.js"></script>
+
+<!-- tost msg -->
+<script src="<?php echo base_url(); ?>assets/toastr/toastr.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/toastr/tost.js"></script>   
+
+
         <!-- END SCRIPTS --> 
         <script type="text/javascript">var baseurl = "<?php print base_url(); ?>";</script>
     <script src="<?php echo base_url(); ?>assets/js/myjs/login.js"></script>	

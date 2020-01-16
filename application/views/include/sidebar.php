@@ -45,7 +45,7 @@
 		<?php }?>
 		<li class="<?php if($active_menu=='rep'){	echo 'x-active-nav';	} ?>"><a
                 href="<?php echo base_url() ?>Welcome/Report"><span class="fa fa-file"></span> <span
-                    class="xn-text">Report</span></a></li>
+                    class="xn-text">Invoice Report</span></a></li>
         <!-- <li class="<?php if($active_menu=='tra'){	echo 'x-active-nav';	} ?>"><a href="<?php echo base_url() ?>Welcome/transaction"><span class="fa fa-money"></span> <span class="xn-text">Transaction Master</span></a></li>
                                 <li class="<?php if($active_menu=='rep'){	echo 'x-active-nav';	} ?>"><a href="<?php echo base_url() ?>Welcome/reports"><span class="fa fa-file"></span> <span class="xn-text">Reports</span></a></li> -->
 

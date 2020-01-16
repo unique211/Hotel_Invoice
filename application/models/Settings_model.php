@@ -61,7 +61,8 @@ class Settings_model extends CI_Model
         $password = $this->input->post('password');
         // $user_id ="admin";
         //  $password ="admin";
-
+		date_default_timezone_set('Asia/Kolkata');
+        $date = date("Y-m-d");
 
 
         $msg = 0;
@@ -85,13 +86,30 @@ class Settings_model extends CI_Model
 
 
             if (($user_id == $user_id) && ($get_password == $password)) {
-                $msg = 1;
+			   if($role=="Admin"){
 
-
-
+				$this->db->select('hotel_master.*');
+				$this->db->from('hotel_master');
+				$this->db->where('id', $hotel_id);
+				$this->db->where('to_date <=', $date);
+				$this->db->where('status', 1);
+				$query1 = $this->db->get();
+				if ($query1->num_rows() > 0) {
+					$msg = 2;
+				}else{
+					$msg = 1;
                 $this->session->userid = $user_id;
                 $this->session->role = $role;
                 $this->session->hotel_id = $hotel_id;
+				}
+
+			   }else{
+				$msg = 1;
+                $this->session->userid = $user_id;
+                $this->session->role = $role;
+                $this->session->hotel_id = $hotel_id;
+			   }
+			
              
             }
         }

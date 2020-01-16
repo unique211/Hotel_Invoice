@@ -14,7 +14,7 @@
                <!-- END X-NAVIGATION VERTICAL -->
                <!-- START BREADCRUMB -->
                <ul class="breadcrumb">
-                    <li class="active">Reports</li>
+                    <li class="active">Invoice Report</li>
                </ul>
                <!-- END BREADCRUMB -->
                <!-- PAGE CONTENT WRAPPER -->
@@ -25,7 +25,7 @@
                               <!-- START SIMPLE DATATABLE -->
                               <div class="panel panel-default">
                                    <div class="panel-heading">
-                                        <h3 class="panel-title">Reports</h3>
+                                        <h3 class="panel-title">Invoice Report</h3>
                                         <ul class="panel-controls">
                                              <!-- <li> <button class="btn btn-success btnhideshow" style="background-color:#00B050;"> Add Detail</button></li> -->
                                         </ul>
@@ -36,7 +36,7 @@
 									<div class="row form-group">
 
 										<div class="col-lg-2">
-											<label>From</label>
+											<label>From Date :</label>
 										</div>
 										<div class="col-lg-2">
 											<div class="input-group date " data-provide="datepicker" required>
@@ -47,7 +47,7 @@
 											</div>
 										</div>
 										<div class="col-lg-2">
-											<label>To</label>
+											<label>To  Date :</label>
 										</div>
 										<div class="col-lg-2">
 											<div class="input-group date " data-provide="datepicker" required>

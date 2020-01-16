@@ -176,11 +176,11 @@ $table->easyCell("", 'align:C;border:1; font-size:12;');
 $table->easyCell("$g_total", 'align:R; border:1; font-size:12;');
 $table->printRow();
 
-$table->easyCell("", ' align:R; colspan:5; font-size:12; paddingY:8;');
+$table->easyCell("", ' align:R; colspan:5; font-size:12; paddingY:5;');
 
 $table->printRow();
 
-$table->easyCell("<b>ISO 9001-2015 Certified Company ::</b>2020  copyright Zodiactech Software.", ' align:C; colspan:5; font-size:12; ');
+$table->easyCell("<b>ISO 9001-2015 Certified Company ::</b> 2020  copyright Zodiactech Software. Mo: +91 83909 66444", ' align:C; colspan:5; font-size:10; ');
 
 $table->printRow();
 

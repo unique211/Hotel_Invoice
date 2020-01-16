@@ -37,8 +37,8 @@ $(document).ready(function() {
             }
         });
     });
-    $(document).on("submit", "#master_form", function(e) {
-        e.preventDefault();
+
+    function adddata() {
         var user_id = $('#user_id').val();
         var password = $('#psw').val();
         var confirm = $('#cpsw').val();
@@ -146,10 +146,49 @@ $(document).ready(function() {
             $("#cpsw").focus();
             swal("Alert", validation1, "warning");
         }
+    }
+
+    function getDate(input) {
+        from = input.split("/");
+        return new Date(from[2], from[1] - 1, from[0]);
+    }
+    $(document).on("submit", "#master_form", function(e) {
+        e.preventDefault();
+        var from = $('#from').val();
+        var to = $('#to').val();
+
+        var date1 = new Date();
+        date1 = date1.toString('dd/MM/yyyy');
+
+        var date_ini = getDate(from);
+        var date_end = getDate(to);
+
+        var tdateAr = from.split('/');
+        var fromdate = tdateAr[2] + '-' + tdateAr[1] + '-' + tdateAr[0];
+
+        var tdateAr = to.split('/');
+        var todate = tdateAr[2] + '-' + tdateAr[1] + '-' + tdateAr[0];
+
+        var today = new Date().toDateString();
+        var date_ini2 = new Date(fromdate).toDateString();
+        var date_end2 = new Date(todate).toDateString();
 
 
 
-        /* */
+
+
+        if (date_ini < date_end) {
+
+            adddata();
+            //put code here to call server
+        } else {
+            if (date_ini2 == date_end2) {
+                adddata();
+            } else {
+                swal("To Date is Invalid", "Hey, To Date is Always > OR = From Date !!", "error");
+            }
+
+        }
 
 
 

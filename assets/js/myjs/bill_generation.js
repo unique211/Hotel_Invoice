@@ -35,6 +35,7 @@ $(document).ready(function() {
         var table_id = $('#table_nm').val();
         var emp_id = $('#emp_nm').val();
         var gst_per = $('#gst').val();
+        var service_per = $('#service_per').val();
         var total_amt = $('#tamt').val();
 
         var dateslt = date1.split('/');
@@ -56,6 +57,7 @@ $(document).ready(function() {
                     table_id: table_id,
                     emp_id: emp_id,
                     gst_per: gst_per,
+                    service_per: service_per,
                     total_amt: total_amt,
                     table_name: table_name
                 },
@@ -180,17 +182,25 @@ $(document).ready(function() {
 
 
                     var gst = data[i].gst_per;
+                    var service_per = data[i].service_per;
                     var tamt = data[i].total_amt;
                     var Tot_gst = 0;
+                    var service = 0;
                     if (tamt == "") {
                         tamt = 1;
                     }
                     if (gst == "") {
                         gst = 0;
                     }
-
                     Tot_gst = parseFloat(tamt) * parseFloat(gst) / 100;
-                    var g_tot = parseFloat(Tot_gst) + parseFloat(tamt);
+
+                    if (service_per == "") {
+                        service_per = 0;
+                    }
+                    service = parseFloat(tamt) * parseFloat(service_per) / 100;
+
+                    var g_tot = parseFloat(Tot_gst) + parseFloat(service) + parseFloat(tamt);
+
 
                     html += '<tr>' +
 
@@ -304,6 +314,7 @@ $(document).ready(function() {
                     $('#emp_nm').val(data[i].emp_id);
                     $('#tamt').val(data[i].total_amt);
                     $('#gst').val(data[i].gst_per).trigger('blur');
+                    $('#service_per').val(data[i].service_per).trigger('blur');
 
 
                     $.ajax({
@@ -375,6 +386,7 @@ $(document).ready(function() {
         $('#emp_nm').val('');
         $('#tamt').val('');
         $('#gst').val('');
+        $('#service_per').val('');
         $("#btnprint").hide();
         $('#btnprint').val('');
         count_all_total();
@@ -478,8 +490,25 @@ $(document).ready(function() {
         Tot_gst = parseFloat(tamt) * parseFloat(gst) / 100;
         //   alert(gst);
         $("#tgst").val(Tot_gst.toFixed(2));
+
+        var service = $("#service_per").val();
+        var service_charge = 0;
+
+        if (service == "") {
+            service = 0;
+        }
+
+        service_charge = parseFloat(tamt) * parseFloat(service) / 100;
+        //   alert(gst);
+        $("#service").val(service_charge.toFixed(2));
+
+
+
+
+
         var tgst = Tot_gst;
-        g_tot = parseFloat(tgst) + parseFloat(totalamt);
+        var tservise = service_charge;
+        g_tot = parseFloat(tgst) + parseFloat(tservise) + parseFloat(totalamt);
 
 
         $('#tamt').val(totalamt.toFixed(2));
@@ -546,6 +575,9 @@ $(document).ready(function() {
     });
     $(document).on('blur', '#gst', function() {
         count_gst();
+    });
+    $(document).on('blur', '#service_per', function() {
+        count_all_total();
     });
     $(document).on('click', '.delete_data1', function() {
         if (confirm("Are you sure you want to delete this?")) {

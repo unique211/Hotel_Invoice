@@ -40,6 +40,7 @@ $adderss="";
 $mobile1="";
 $mobile2="";
 $GSTIN="";
+$base_url=base_url();
 
 foreach($hotel_details as $value)
  {
@@ -50,13 +51,18 @@ $mobile1=$value->mobile1;
 $mobile2=$value->mobile2;
 $GSTIN=$value->gst_no;
  }
-
+ $image='Upload/'.$logo;
 
 $table = new easyTable($pdf, '{40,140}', 'width:180; border-color:#000000; font-size:10; paddingY:0;');
 
-$table->easyCell('', 'img:Upload/'.$logo.', w35; rowspan:4;  align:L;');
+// $table->easyCell('', 'img:Upload/'.$logo.', w35; rowspan:4;  align:L;');
+// $table->easyCell("$hotel_name", ' align:C; font-style:B;font-size:16;');
+// $table->printRow();
+
+$table->easyCell('', 'img:upload/'.$logo.', w35; rowspan:4;  align:L;');
 $table->easyCell("$hotel_name", ' align:C; font-style:B;font-size:16;');
 $table->printRow();
+
 
 $table->easyCell("$adderss", ' align:C; font-size:12;');	
 $table->printRow();
@@ -92,7 +98,9 @@ $table_name="";
 $emp_name="";
 $tot_amt=0;
 $gst_per=0;
+$service_per=0;
 $tot_gst=0;
+$service=0;
 $g_total= 0;
 $sgst=0;
 
@@ -103,11 +111,15 @@ $emp_name=$value2->emp_name;
 $table_name=$value2->table_name;
 $tot_amt=$value2->total_amt;
 $gst_per=$value2->gst_per;
+$service_per=$value2->service_per;
 $sgst=floatval($gst_per)/2;
 
+$sgst=number_format($sgst,2);
+
 $tot_gst= floatval($sgst)*floatval($tot_amt)/100;
+$service= floatval($service_per)*floatval($tot_amt)/100;
 $tot_gst2= floatval($gst_per)*floatval($tot_amt)/100;
-$g_total= floatval($tot_amt)+floatval($tot_gst2);
+$g_total= floatval($tot_amt)+floatval($tot_gst2)+floatval($service);
 
  }
 
@@ -155,7 +167,7 @@ foreach ($details as $value3) {
 
 	$sr = $sr + 1;
 }
-$table->easyCell("Thanks Visit Again", ' align:C; colspan:2; rowspan:4; border:1; font-size:12;font-style:BU;');
+$table->easyCell("Thanks Visit Again", ' align:C; colspan:2; rowspan:5; border:1; font-size:12;font-style:BU;');
 $table->easyCell("Total Amount", ' align:R;  border:TLR; font-size:12;font-style:B;');
 $table->easyCell("", 'align:C;border:TLR; font-size:12;');
 $table->easyCell("$tot_amt", 'align:R; border:TLR; font-size:12;');
@@ -171,6 +183,11 @@ $table->easyCell("$sgst%", 'align:R;border:TLR; font-size:12;');
 $table->easyCell("$tot_gst", 'align:R; border:TLR; font-size:12;');
 $table->printRow();
 
+$table->easyCell("Service(%) ", ' align:R;  border:TLR; font-size:12;font-style:B;');
+$table->easyCell("$service_per%", 'align:R;border:TLR; font-size:12;');
+$table->easyCell("$service", 'align:R; border:TLR; font-size:12;');
+$table->printRow();
+
 $table->easyCell("Grand Total", ' align:R;  border:1; font-size:12;font-style:B;');
 $table->easyCell("", 'align:C;border:1; font-size:12;');
 $table->easyCell("$g_total", 'align:R; border:1; font-size:12;');
@@ -180,7 +197,7 @@ $table->easyCell("", ' align:R; colspan:5; font-size:12; paddingY:5;');
 
 $table->printRow();
 
-$table->easyCell("<b>ISO 9001-2015 Certified Company ::</b> 2020  copyright Zodiactech Software. Mo: +91 83909 66444", ' align:C; colspan:5; font-size:10; ');
+$table->easyCell("Zodiactech Software. Mo: +91 83909 66444", ' align:C; colspan:5; font-size:10; ');
 
 $table->printRow();
 

@@ -94,7 +94,7 @@ class CHotel_masrer extends CI_Controller
         //  $id=$this->input->post('id');
         if ($_FILES['attachment']['size'] > 0) {
             $this->upload->initialize(array(
-                "upload_path" => './Upload/',
+                "upload_path" => './upload/',
                 "overwrite" => FALSE,
                 "max_filename" => 300,
                 "remove_spaces" => TRUE,

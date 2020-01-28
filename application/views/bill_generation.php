@@ -179,6 +179,13 @@
                                                                                 <th></th>
 																		   </tr>
 																		   <tr>
+                                                                                <th colspan="3" style="text-align: right;">Service Charge (%)</th>
+                                                                                <th><input type="number" id="service_per" name="service_per" class="form-control text-right"  placeholder="0" value="0" ></th>
+                                                                                <th><input type="number" id="service" name="service" class="form-control text-right" disabled placeholder="0.00" value="0.00" ></th>
+                                                                               
+                                                                                <th></th>
+																		   </tr>
+																		   <tr>
                                                                                 <th colspan="3" style="text-align: right;">Grand Total</th>
                                                                                 <th></th>
                                                                                 <th><input type="number" id="gtotal" name="gtotal" class="form-control text-right" disabled placeholder="0.00" value="0.00" ></th>

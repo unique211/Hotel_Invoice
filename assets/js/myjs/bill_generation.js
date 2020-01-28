@@ -186,15 +186,16 @@ $(document).ready(function() {
                     var tamt = data[i].total_amt;
                     var Tot_gst = 0;
                     var service = 0;
+
                     if (tamt == "") {
                         tamt = 1;
                     }
-                    if (gst == "") {
+                    if (gst == "" || gst == null) {
                         gst = 0;
                     }
                     Tot_gst = parseFloat(tamt) * parseFloat(gst) / 100;
 
-                    if (service_per == "") {
+                    if (service_per == "" || service_per == null) {
                         service_per = 0;
                     }
                     service = parseFloat(tamt) * parseFloat(service_per) / 100;

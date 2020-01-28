@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+
     "content-hash": "e1eabdc6dd7a0a8eac770d1272796e1e",
     "packages": [
         {
@@ -277,6 +278,7 @@
             "time": "2019-01-30T14:11:19+00:00"
         }
     ],
+
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
@@ -365,6 +367,55 @@
             "time": "2012-08-25T12:49:29+00:00"
         },
         {
+            "name": "myclabs/deep-copy",
+            "version": "1.9.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/myclabs/DeepCopy.git",
+                "reference": "579bb7356d91f9456ccd505f24ca8b667966a0a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/579bb7356d91f9456ccd505f24ca8b667966a0a7",
+                "reference": "579bb7356d91f9456ccd505f24ca8b667966a0a7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "replace": {
+                "myclabs/deep-copy": "self.version"
+            },
+            "require-dev": {
+                "doctrine/collections": "^1.0",
+                "doctrine/common": "^2.6",
+                "phpunit/phpunit": "^7.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DeepCopy\\": "src/DeepCopy/"
+                },
+                "files": [
+                    "src/DeepCopy/deep_copy.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Create deep copies (clones) of your objects",
+            "keywords": [
+                "clone",
+                "copy",
+                "duplicate",
+                "object",
+                "object graph"
+            ],
+            "time": "2019-12-15T19:12:40+00:00"
+        },
+        {
+
             "name": "phpdocumentor/reflection-common",
             "version": "2.0.0",
             "source": {
@@ -517,6 +568,7 @@
         },
         {
             "name": "phpspec/prophecy",
+
             "version": "v1.10.2",
             "source": {
                 "type": "git",
@@ -527,14 +579,17 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/phpspec/prophecy/zipball/b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
                 "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
+
                 "shasum": ""
             },
             "require": {
                 "doctrine/instantiator": "^1.0.2",
                 "php": "^5.3|^7.0",
                 "phpdocumentor/reflection-docblock": "^2.0|^3.0.2|^4.0|^5.0",
+
                 "sebastian/comparator": "^1.2.3|^2.0|^3.0|^4.0",
                 "sebastian/recursion-context": "^1.0|^2.0|^3.0|^4.0"
+
             },
             "require-dev": {
                 "phpspec/phpspec": "^2.5 || ^3.2",
@@ -577,6 +632,7 @@
                 "stub"
             ],
             "time": "2020-01-20T15:57:02+00:00"
+
         },
         {
             "name": "phpunit/php-code-coverage",

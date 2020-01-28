@@ -75,13 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	// 'hostname' => '166.62.28.109',
-	// 'username' => 'i3175962_ally',
-	// 'password' => ')Ee#L9p8zaI-',
-		'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'hotel_invoice',
+	'hostname' => 'us-cdbr-iron-east-05.cleardb.net',
+	'username' => 'bede3a9379a576',
+	'password' => '0d2136ba',
+	'database' => 'heroku_08c733bc7c79092',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

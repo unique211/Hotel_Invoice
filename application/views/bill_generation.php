@@ -206,14 +206,19 @@
 												<button type="button" class="btn btn-warning" id="reset">Reset</button>
 												<button class="btn btn-success" type="submit" form="invoice_form"
                                                                  id="btnprint" name="btnprint" value=""
-                                                                 style="display:none">Print</button>
+																 style="display:none">Print</button>
+											 <button class="btn btn-success" type="submit" form="invoice_form2"
+                                                                 id="btnprint2" name="btnprint2" value=""
+                                                                 style="display:none">Print PDF</button>
 
   
                                             </div>
                                         </div>
 									</form>
 									<form id="item_info" name="item_info"> </form>
-									<form name="invoice_form" id="invoice_form" method="POST"  action="<?php echo base_url('CBill_genrate/print_invoice');?>"
+									<form name="invoice_form" id="invoice_form" method="POST"  action="<?php echo base_url('CBill_genrate/print_invoice2');?>"
+																 target="_blank"></form>
+									<form name="invoice_form2" id="invoice_form2" method="POST"  action="<?php echo base_url('CBill_genrate/print_invoice');?>"
                                                                  target="_blank"></form>
                                 </div>
                             </div>

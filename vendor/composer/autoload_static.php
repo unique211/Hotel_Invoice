@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit243f8d4b12d8e15f6afbaa1047ef31e1
+class ComposerStaticInitaf97d7a44b226af8482881ed8aa0b7a3
 {
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
@@ -12,6 +12,10 @@ class ComposerStaticInit243f8d4b12d8e15f6afbaa1047ef31e1
     );
 
     public static $prefixLengthsPsr4 = array (
+        's' => 
+        array (
+            'setasign\\Fpdi\\' => 14,
+        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
@@ -27,7 +31,12 @@ class ComposerStaticInit243f8d4b12d8e15f6afbaa1047ef31e1
         ),
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'Prophecy\\' => 9,
+        ),
+        'M' => 
+        array (
+            'Mpdf\\' => 5,
         ),
         'D' => 
         array (
@@ -37,6 +46,10 @@ class ComposerStaticInit243f8d4b12d8e15f6afbaa1047ef31e1
     );
 
     public static $prefixDirsPsr4 = array (
+        'setasign\\Fpdi\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/setasign/fpdi/src',
+        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
@@ -55,9 +68,17 @@ class ComposerStaticInit243f8d4b12d8e15f6afbaa1047ef31e1
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'Prophecy\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
+        ),
+        'Mpdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mpdf/mpdf/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -550,10 +571,10 @@ class ComposerStaticInit243f8d4b12d8e15f6afbaa1047ef31e1
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit243f8d4b12d8e15f6afbaa1047ef31e1::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit243f8d4b12d8e15f6afbaa1047ef31e1::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit243f8d4b12d8e15f6afbaa1047ef31e1::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit243f8d4b12d8e15f6afbaa1047ef31e1::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitaf97d7a44b226af8482881ed8aa0b7a3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitaf97d7a44b226af8482881ed8aa0b7a3::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitaf97d7a44b226af8482881ed8aa0b7a3::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitaf97d7a44b226af8482881ed8aa0b7a3::$classMap;
 
         }, null, ClassLoader::class);
     }

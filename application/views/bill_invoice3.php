@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>Express Wash Customer Invoice</title>
+    <title>Customer Invoice</title>
     <style>
         @media print {
             @page {

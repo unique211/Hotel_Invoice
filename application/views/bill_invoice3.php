@@ -72,7 +72,7 @@
             <td><b><?php echo htmlentities($value2->customer_name);?></b></td>
         </tr>
         <tr>
-            <td>Table Number :</td>
+            <td>Table No :</td>
             <td><b><?php echo htmlentities($value2->table_name);?><br></b></td>
         </tr>
 

@@ -105,6 +105,20 @@ class Bill_model extends CI_Model
 			return $query->result();
 		
 	}
+	function get_items_count($table_name, $id)
+	{
+		
+			$this->db->select('bill_details.*,item_master.curse');
+			$this->db->from('bill_details');
+			$this->db->join('item_master', 'item_master.id=bill_details.item_id');
+			$this->db->where('bill_details.bill_ref_id', $id);
+			$query = $this->db->get();
+
+
+
+			return $query->num_rows();
+		
+	}
 	function getdropdown($table)
 	{
 		$hotel_id=$this->session->hotel_id;

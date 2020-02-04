@@ -151,43 +151,29 @@ class CBill_genrate extends CI_Controller
 	{
 
 	 	$id=$this->input->post('btnprint');
-	// 	 // boost the memory limit if it's low ;)
-	// 	 ini_set('memory_limit', '256M');
-	// 	 // load library
-	// 	 $this->load->library('mpdf');
-	// 	 $pdf = $this->mpdf->load();
-	// 	 // retrieve data from model or just static date
-	// 	 $data['hotel_details']=$this->Bill_model->get_hotel_data();
-	// 	 $data['master']=$this->Bill_model->get_master_where('bill_master', $id);
-	// 	 $data['details']=$this->Bill_model->get_master_where1('bill_details', $id);
-	// 	 $pdf->allow_charset_conversion=true;  // Set by default to TRUE
-	// 	 $pdf->charset_in='UTF-8';
-	//   //   $pdf->SetDirectionality('rtl'); // Set lang direction for rtl lang
-	// 	 $pdf->autoLangToFont = true;
-	// 	 $html = $this->load->view('bill_invoice', $data, true);
-	// 	 // render the view into HTML
-	// 	 $pdf->WriteHTML($html);
-	// 	 // write the HTML into the PDF
-	// 	 $output = 'itemreport' . date('Y_m_d_H_i_s') . '_.pdf';
-	// 	 $pdf->Output("$output", 'I');
-	// 	 // save to file because we can exit();
-
-
-
-
-		 $data['hotel_details']=$this->Bill_model->get_hotel_data();
+	 		$data['hotel_details']=$this->Bill_model->get_hotel_data();
 		 $data['master']=$this->Bill_model->get_master_where('bill_master', $id);
 		 $data['details']=$this->Bill_model->get_master_where1('bill_details', $id);
+		 $items=$this->Bill_model->get_items_count('bill_details', $id);
+
+		 $mm=190;
+		 $new_mm=5*floatval($items);
+		 $mm=$mm+intval($new_mm);
 
 		 ini_set('memory_limit', '256M');
-		 $mpdf = new \Mpdf\Mpdf();
-		 $pdf->allow_charset_conversion=true;  // Set by default to TRUE
-		 $pdf->charset_in='UTF-8';
-	 	 $pdf->autoLangToFont = true;
-		 $html = $this->load->view('bill_invoice3',$data,true);
-		 $mpdf->WriteHTML($html);
-		// $mpdf->Output(); // opens in browser
-		 $output = 'itemreport' . date('Y_m_d_H_i_s') . '_.pdf';
-		 $mpdf->Output("$output", 'I');
+		 $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [79, $mm]]);
+	
+		$html = $this->load->view('bill_invoice3',$data,true);
+	//	 $mpdf->WriteHTML($html);
+    $mpdf->page   = 0;
+    $mpdf->state  = 0;
+ 	  $mpdf->WriteHTML($html);
+ 	$output = 'itemreport' . date('Y_m_d_H_i_s') . '_.pdf';
+	  $mpdf->Output("$output", 'I');
+ //   $mpdf->Output($output);
+
+
+
 	}
+	
 }

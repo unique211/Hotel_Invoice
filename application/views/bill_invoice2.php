@@ -95,6 +95,8 @@ $table = new easyTable($pdf, '{45,45,45,45}', 'width:180; border-color:#000000; 
 
 $customer_name="";
 $table_name="";
+$bill_no="";
+$bill_date="";
 $emp_name="";
 $tot_amt=0;
 $gst_per=0;
@@ -106,6 +108,9 @@ $sgst=0;
 
 foreach($master as $value2)
  {
+
+	$bill_no=$value2->bill_number;
+$bill_date=date("d M Y", strtotime($value2->bill_date));
 $customer_name=$value2->customer_name;
 $emp_name=$value2->emp_name;
 $table_name=$value2->table_name;
@@ -122,6 +127,12 @@ $tot_gst2= floatval($gst_per)*floatval($tot_amt)/100;
 $g_total= floatval($tot_amt)+floatval($tot_gst2)+floatval($service);
 
  }
+
+ $table->easyCell("Bill Number : ", ' align:L;font-style:B; font-size:12;');
+$table->easyCell("$bill_no", 'font-size:12;align:L;');
+$table->easyCell("Bill Date : ", ' align:L;font-style:B; font-size:12;');
+$table->easyCell("$bill_date", 'font-size:12;align:L;');
+$table->printRow();
 
 $table->easyCell("Customer Name : ", ' align:L;font-style:B; font-size:12;');
 $table->easyCell("$customer_name", 'font-size:12;align:L;');

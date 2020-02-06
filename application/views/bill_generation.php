@@ -44,6 +44,55 @@
                             </div>
                             <div class="panel-body">
                                 <div class="col-lg-12 ">
+								<form action="" id="search_form" name="search_form">
+									<div class="row form-group">
+
+										<div class="col-lg-2">
+											<label>From Date :</label>
+										</div>
+										<div class="col-lg-2">
+											<div class="input-group date " data-provide="datepicker" required>
+												<input type="text" class="form-control input-sm placeholdesize date1" id="from" autocomplete="off" name="from" require>
+												<div class="input-group-addon">
+													<span class="fa fa-calendar"></span>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-2">
+											<label>To  Date :</label>
+										</div>
+										<div class="col-lg-2">
+											<div class="input-group date " data-provide="datepicker" required>
+												<input type="text" class="form-control input-sm placeholdesize date1" id="to" autocomplete="off" name="to" require>
+												<div class="input-group-addon">
+													<span class="fa fa-calendar"></span>
+												</div>
+											</div>
+										</div>
+
+									
+											
+											<div class="col-lg-2">
+												<label>Status</label>
+											</div>
+											<div class="col-lg-2">
+												<select name="status" id="status" class="form-control">
+												<option selected  value="1" >Running</option>	
+												<option   value="2" >Billed</option>	
+												<option   value="All" >All</option>	
+												</select>
+											</div>
+									
+
+
+									</div>
+									<div class="row form-group">
+										<button type="submit" style="float:right;" class="btn btn-warning">
+											Search</button>
+										<br>
+
+									</div>
+								</form>
                                     <div class="table-responsive" id="show_master">
 
                                     </div>
@@ -204,6 +253,7 @@
                                                 <input type="hidden" id="save_update" value="">
 												<input class="btn btn-primary" type="submit" value="Save">
 												<button type="button" class="btn btn-warning" id="reset">Reset</button>
+												<button type="button" class="btn btn-info" id="generate_bill">Generate Bill</button>
 												<button class="btn btn-success" type="submit" form="invoice_form"
                                                                  id="btnprint" name="btnprint" value=""
 																 style="display:none">Print</button>
@@ -255,8 +305,9 @@
           var date = new Date();
           date = date.toString('dd/MM/yyyy');
 		  $("#bill_date").val(date);
-		//  $("#to").val(date);
-          //  $("#fdate").val(date);
+		  $("#from").val(date);
+            $("#to").val(date);
+	
      </script>
         <script type="text/javascript">
         var base_url = "<?php print base_url(); ?>";

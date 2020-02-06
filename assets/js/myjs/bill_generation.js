@@ -108,9 +108,11 @@ $(document).ready(function() {
                                 if (data == true) {
                                     if (id != "") {
                                         successTost("Bill Update Successfully");
+                                        $('.closehideshow').trigger('click');
 
                                     } else {
                                         successTost("Bill Added Successfully");
+                                        $('.closehideshow').trigger('click');
                                     }
                                     //    $('#master_form')[0].reset();
                                     //  $('#save_update').val('');
@@ -141,15 +143,87 @@ $(document).ready(function() {
 
 
     });
+
+
+    function getDate(input) {
+        from = input.split("/");
+        return new Date(from[2], from[1] - 1, from[0]);
+    }
+
+
+    $(document).on("submit", "#search_form", function(e) {
+        e.preventDefault();
+
+        var from = $('#from').val();
+        var to = $('#to').val();
+
+
+
+        var date1 = new Date();
+        date1 = date1.toString('dd/MM/yyyy');
+        var cur_date = getDate(date1);
+        var date_ini = getDate(from);
+        var date_end = getDate(to);
+
+
+
+        var tdateAr = from.split('/');
+        var fromdate = tdateAr[2] + '-' + tdateAr[1] + '-' + tdateAr[0];
+
+        var tdateAr = to.split('/');
+        var todate = tdateAr[2] + '-' + tdateAr[1] + '-' + tdateAr[0];
+
+
+
+
+
+        var today = new Date().toDateString();
+
+        var date_ini2 = new Date(fromdate).toDateString();
+        var date_end2 = new Date(todate).toDateString();
+
+
+
+
+
+        if (date_ini < date_end) {
+
+            datashow();
+            //put code here to call server
+        } else {
+            if (date_ini2 == date_end2) {
+                datashow();
+            } else {
+                swal("To Date is Invalid", "Hey, To Date is Always > OR = From Date !!", "error");
+            }
+
+        }
+    });
     //----------------------submit form code end------------------------------
     datashow();
     //----------------show data in the tabale code start-----------------------
     function datashow() {
         // var role = 'staff';
+
+        var from = $("#from").val();
+        var to = $("#to").val();
+        var status = $("#status").val();
+
+
+        var fdob = from.split('/');
+        var fromdate = fdob[2] + "-" + fdob[1] + "-" + fdob[0];
+
+        var fdob = to.split('/');
+        var todate = fdob[2] + "-" + fdob[1] + "-" + fdob[0];
+
+
         $.ajax({
             type: "POST",
             url: base_url + "CBill_genrate/get_master",
             data: {
+                fromdate: fromdate,
+                todate: todate,
+                status: status,
                 table_name: table_name,
 
             },
@@ -165,10 +239,12 @@ $(document).ready(function() {
                     '<thead>' +
                     '<tr>' +
                     '<th><font style="font-weight:bold">Bill Number</font></th>' +
-                    '<th ><font style="font-weight:bold">Date & Time</font></th>' +
+                    '<th ><font style="font-weight:bold">Start Time</font></th>' +
+                    '<th><font style="font-weight:bold">Status</font></th>' +
                     '<th><font style="font-weight:bold">Customer Name</font></th>' +
                     '<th><font style="font-weight:bold">Table Name</font></th>' +
                     '<th><font style="font-weight:bold">Employee Name</font></th>' +
+                    '<th><font style="font-weight:bold">Total Quantity</font></th>' +
                     '<th><font style="font-weight:bold">Total Amount</font></th>' +
                     '<th class="not-export-column"><font style="font-weight:bold">Action</font></th>' +
                     '</tr>' +
@@ -204,14 +280,23 @@ $(document).ready(function() {
 
                     var g_tot = parseFloat(Tot_gst) + parseFloat(service) + parseFloat(tamt);
 
+                    var status = "";
+                    if (data[i].status == 1) {
+                        status = "Running";
+                    } else {
+                        status = "Billed";
+                    }
+
 
                     html += '<tr>' +
 
-                        '<td  >' + data[i].id + '</td>' +
+                        '<td  >' + data[i].bill_number + '</td>' +
                         '<td  >' + created_at + '</td>' +
+                        '<td  >' + status + '</td>' +
                         '<td >' + data[i].customer_name + '</td>' +
                         '<td >' + data[i].table_name + '</td>' +
                         '<td >' + data[i].emp_name + '</td>' +
+                        '<td  >' + data[i].tot_quantity + '</td>' +
                         '<td >' + g_tot.toFixed(2) + '</td>' +
                         '<td class="not-export-column" ><button name="edit" value="edit" class="edit_data btn btn-success" id=' + data[i].id + '><i class="fa fa-edit"></i></button>' +
                         '&nbsp;<button name="delete" value="Delete" class="delete_data btn btn-danger" id=' + data[i].id + '><i class="fa fa-trash"></i></button>' +
@@ -304,14 +389,18 @@ $(document).ready(function() {
 
                 for (var i = 0; i < data.length; i++) {
                     $('#save_update').val(id);
-                    $("#btnprint").show();
-                    $('#btnprint').val(id);
-                    $("#btnprint2").show();
-                    $('#btnprint2').val(id);
+                    if (data[i].bill_number > 0) {
+                        $("#btnprint").show();
+                        $('#btnprint').val(id);
+                        $("#btnprint2").show();
+                        $('#btnprint2').val(id);
+                    }
+
                     var date = data[i].date;
                     var fdob = date.split('-');
                     date = fdob[2] + "/" + fdob[1] + "/" + fdob[0];
 
+                    getMasterSelect2('table_master', '#table_nm', data[i].id);
 
                     $('#bill_date').val(date);
                     $('#customer').val(data[i].customer_name);
@@ -400,12 +489,140 @@ $(document).ready(function() {
     }
     $(document).on('click', '.closehideshow', function() {
         form_clear();
+        getMasterSelect2('table_master', '#table_nm', 0);
     });
 
 
     $(document).on('click', '#reset', function() {
         form_clear();
     });
+
+    $(document).on('click', '#generate_bill', function() {
+        var table_id = $('#table_nm').val();
+        var emp_id = $('#emp_nm').val();
+
+        //alert(table_id);
+
+
+
+        if (table_id == "" || table_id == null) {
+            swal("Table Not Selected !!", "Hey,Please Select Table !!", "error");
+        } else {
+            if (emp_id == "" || emp_id == null) {
+                swal("Employee Not Selected !!", "Hey,Please Select Employee !!", "error");
+            } else {
+                add_data();
+            }
+        }
+
+
+    });
+
+    function add_data() {
+
+        var id = $('#save_update').val();
+
+        var date1 = $('#bill_date').val();
+        var customer_name = $('#customer').val();
+        var table_id = $('#table_nm').val();
+        var emp_id = $('#emp_nm').val();
+        var gst_per = $('#gst').val();
+        var service_per = $('#service_per').val();
+        var total_amt = $('#tamt').val();
+
+        var dateslt = date1.split('/');
+        var date = dateslt[2] + '-' + dateslt[1] + '-' + dateslt[0];
+
+        var r1 = $('#file_info_tbody').find('tr');
+        var r = r1.length;
+        var tr = "";
+
+        if (r > 0) {
+            $.ajax({
+                type: "POST",
+                url: base_url + "CBill_genrate/adddata_generate",
+
+                data: {
+                    id: id,
+                    date: date,
+                    customer_name: customer_name,
+                    table_id: table_id,
+                    emp_id: emp_id,
+                    gst_per: gst_per,
+                    service_per: service_per,
+                    total_amt: total_amt,
+                    table_name: table_name
+                },
+                dataType: "JSON",
+                async: false,
+                success: function(data) {
+                    var ref_id = "";
+
+                    if (id == "") {
+                        ref_id = data;
+                    } else {
+                        ref_id = id;
+                    }
+
+                    $("#btnprint").show();
+                    $('#btnprint').val(ref_id);
+                    $("#btnprint2").show();
+                    $('#btnprint2').val(ref_id);
+                    $('#save_update').val(ref_id);
+                    //alert(id);
+                    //   alert(id + ",," + ref_id);
+
+                    for (var i = 0; i < r; i++) {
+
+                        var bill_ref_id = ref_id;
+                        var item_id = $(r1[i]).find('td:eq(1)').html();
+                        var varity = $(r1[i]).find('td:eq(2)').html();
+                        var qty = $(r1[i]).find('td:eq(3)').html();
+                        var rate = $(r1[i]).find('td:eq(4)').html();
+                        var amount = $(r1[i]).find('td:eq(5)').html();
+
+                        $.ajax({
+                            type: "POST",
+                            url: base_url + "CBill_genrate/adddata2",
+                            dataType: "JSON",
+                            async: false,
+                            data: {
+                                bill_ref_id: bill_ref_id,
+                                item_id: item_id,
+                                varity: varity,
+                                qty: qty,
+                                rate: rate,
+                                amount: amount,
+                                table_name: 'bill_details',
+                            },
+                            success: function(data) {
+
+                                if (data == true) {
+                                    if (id != "") {
+                                        successTost("Bill Update Successfully");
+
+                                    } else {
+                                        successTost("Bill Added Successfully");
+                                    }
+                                    datashow();
+                                } else {
+                                    errorTost("Bill Cannot Save");
+                                }
+
+                            }
+
+
+
+                        });
+                    }
+
+
+                }
+            });
+        } else {
+            swal("Details Not Found !!", "Hey, Item Details is Not Found Please fill details !!", "error");
+        }
+    }
 
 
 
@@ -641,7 +858,7 @@ $(document).ready(function() {
 
 
     getMasterSelect('emp_master', '#emp_nm');
-    getMasterSelect('table_master', '#table_nm');
+    getMasterSelect2('table_master', '#table_nm', 0);
     getMasterSelect('item_master', '#item_nm');
 
     function getMasterSelect(table_name, selecter) {
@@ -667,6 +884,43 @@ $(document).ready(function() {
                         name = data[i].emp_name;
                         id = data[i].id;
                     } else if (table_name == "table_master") {
+                        name = data[i].table_name;
+                        id = data[i].id;
+                    } else if (table_name == "item_master") {
+                        name = data[i].curse;
+                        id = data[i].id;
+                    }
+
+                    //alert(name);
+                    html += '<option value="' + id + '" >' + name + '</option>';
+
+                }
+                $(selecter).html(html);
+            }
+        });
+    }
+
+    function getMasterSelect2(table_name, selecter, table_id) {
+
+        $.ajax({
+            type: "POST",
+            url: base_url + "CBill_genrate/getdropdown2",
+            data: {
+                table_name: table_name,
+                table_id: table_id,
+            },
+            dataType: "JSON",
+            async: false,
+            success: function(data) {
+                console.log(data);
+                html = '';
+                var name = '';
+                //					
+                html += '<option selected disabled value="" >Select</option>';
+                //						}
+                for (i = 0; i < data.length; i++) {
+                    var id = '';
+                    if (table_name == "table_master") {
                         name = data[i].table_name;
                         id = data[i].id;
                     } else if (table_name == "item_master") {

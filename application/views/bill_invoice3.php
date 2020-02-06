@@ -91,6 +91,15 @@ margin-top: 0px !important;
 		foreach ($master as $value2) {
 		?>
 			<table style="width: 100%">
+			<tr>
+					<td>Bill Number :</td>
+					<td><b><?php echo htmlentities($value2->bill_number); ?></b></td>
+				</tr>
+				<tr>
+					<td>Bill Date :</td>
+				<?php	$bill_date = date("d M Y", strtotime($value2->bill_date));?>
+					<td><b><?php echo htmlentities($bill_date); ?></b></td>
+				</tr>
 				<tr>
 					<td>Customer Name :</td>
 					<td><b><?php echo htmlentities($value2->customer_name); ?></b></td>

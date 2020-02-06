@@ -1,0 +1,1 @@
+ALTER TABLE bill_master ADD bill_number BIGINT NULL DEFAULT '0' AFTER hotel_id, ADD bill_date DATE NULL AFTER bill_number, ADD table_end_time DATETIME NULL AFTER bill_date;
